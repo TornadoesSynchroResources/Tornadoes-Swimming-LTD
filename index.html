@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tornadoes Learn to Swim</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --aqua: #12c9c9;
+      --orange: #ff641f;
+      --dark: #101820;
+      --light: #f5f8fa;
+      --white: #ffffff;
+      --gray: #66727a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(16, 24, 32, 0.96);
+      padding: 16px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--aqua);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--aqua);
+    }
+
+    .nav-button {
+      background: var(--orange);
+      padding: 10px 18px;
+      border-radius: 25px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 7% 80px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(5,15,20,.55), rgba(5,15,20,.72)),
+        url("https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      color: var(--aqua);
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: .98;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: var(--aqua);
+    }
+
+    .hero p {
+      max-width: 620px;
+      font-size: 20px;
+      color: #e9eeee;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* GENERAL */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-header {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .section-label {
+      color: var(--orange);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      color: var(--gray);
+      font-size: 18px;
+    }
+
+    /* INTRO */
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .intro-image {
+      min-height: 420px;
+      border-radius: 25px;
+      background:
+        url("https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&w=1000&q=85")
+        center/cover;
+    }
+
+    .intro-text p {
+      color: var(--gray);
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    /* PROGRAMS */
+
+    .programs {
+      background: var(--light);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid #e5eaed;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    }
+
+    .card-number {
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--gray);
+    }
+
+    /* LEVELS */
+
+    .levels {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .level {
+      padding: 28px;
+      border-radius: 18px;
+      background: var(--dark);
+      color: white;
+    }
+
+    .level:nth-child(2) {
+      background: var(--aqua);
+      color: var(--dark);
+    }
+
+    .level:nth-child(3) {
+      background: var(--orange);
+    }
+
+    .level:nth-child(4) {
+      background: #26343d;
+    }
+
+    .level h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .level p {
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    /* WHY */
+
+    .why {
+      background: var(--dark);
+      color: white;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .why-item {
+      padding: 25px;
+      border-left: 3px solid var(--aqua);
+    }
+
+    .why-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .why-item p {
+      color: #b8c3c8;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(120deg, var(--aqua), #0ca8b0);
+      color: var(--dark);
+    }
+
+    .cta h2 {
+      max-width: 700px;
+      margin: 0 auto 18px;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+    }
+
+    .cta .btn {
+      background: var(--dark);
+      color: white;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #080d11;
+      color: white;
+      padding: 45px 7%;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      color: #9ba7ad;
+      font-size: 14px;
+    }
+
+    .footer-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .levels {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      section {
+        padding: 65px 6%;
+      }
+
+      .hero {
+        padding: 130px 6% 70px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .cards,
+      .levels {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-image {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="logo">
+      TORNADOES <span>LTS</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#levels">Levels</a></li>
+      <li><a href="#why">Why Tornadoes</a></li>
+      <li>
+        <a href="#join" class="nav-button">JOIN US</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Tornadoes Swimming Programme
+      </div>
+
+      <h1>
+        Learn to Swim.<br>
+        <span>Love the Water.</span>
+      </h1>
+
+      <p>
+        A progressive swimming programme designed to help children
+        build confidence, develop strong swimming skills and enjoy
+        every step of their journey in the water.
+      </p>
+
+      <div class="buttons">
+        <a href="#join" class="btn btn-primary">
+          START YOUR JOURNEY
+        </a>
+
+        <a href="#programs" class="btn btn-secondary">
+          EXPLORE THE PROGRAM
+        </a>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="intro">
+
+      <div class="intro-image"></div>
+
+      <div class="intro-text">
+
+        <div class="section-label">
+          Learn to Swim
+        </div>
+
+        <h2>
+          More than swimming lessons.
+        </h2>
+
+        <p>
+          At Tornadoes, we believe learning to swim is about much
+          more than learning strokes.
+        </p>
+
+        <p>
+          Our programme helps swimmers develop water confidence,
+          safety awareness, technique and independence in a positive
+          and supportive environment.
+        </p>
+
+        <a href="#levels" class="btn btn-primary">
+          SEE OUR LEVELS
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROGRAMS -->
+
+  <section id="programs" class="programs">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Our Programme
+      </div>
+
+      <h2>
+        A pathway for every swimmer.
+      </h2>
+
+      <p>
+        From first experiences in the water to confident independent
+        swimming, our programme provides a clear progression.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-number">01</div>
+        <h3>Water Confidence</h3>
+        <p>
+          Helping swimmers become comfortable, relaxed and confident
+          in the aquatic environment.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">02</div>
+        <h3>Swimming Skills</h3>
+        <p>
+          Developing fundamental skills including floating,
+          breathing, kicking and movement through the water.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">03</div>
+        <h3>Stroke Development</h3>
+        <p>
+          Building proper technique and introducing the four
+          competitive swimming strokes.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">04</div>
+        <h3>Water Safety</h3>
+        <p>
+          Developing essential skills that help swimmers become
+          safer and more capable around water.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">05</div>
+        <h3>Confidence</h3>
+        <p>
+          Creating positive experiences that encourage swimmers to
+          enjoy learning and challenge themselves.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">06</div>
+        <h3>Progression</h3>
+        <p>
+          Preparing swimmers who are ready to continue into more
+          advanced swimming programmes.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEVELS -->
+
+  <section id="levels">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Swimming Levels
+      </div>
+
+      <h2>
+        Find your swimmer's starting point.
+      </h2>
+
+      <p>
+        Our instructors assess each swimmer and help them progress
+        at an appropriate pace.
+      </p>
+
+    </div>
+
+    <div class="levels">
+
+      <div class="level">
+        <h3>Level 1</h3>
+        <p>
+          Introduction to the water, confidence and basic movement.
+        </p>
+      </div>
+
+      <div class="level">
+        <h3>Level 2</h3>
+        <p>
+          Developing independent swimming and fundamental skills.
+        </p>
+      </div>
+
+      <div class="level">
+        <h3>Level 3</h3>
+        <p>
+          Building stronger technique, endurance and stroke skills.
+        </p>
+      </div>
+
+      <div class="level">
+        <h3>Level 4+</h3>
+        <p>
+          Advanced skills and preparation for continued swimming.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY TORNADOES -->
+
+  <section id="why" class="why">
+
+    <div class="section-header">
+
+      <div class="section-label">
+        Why Tornadoes
+      </div>
+
+      <h2>
+        A programme built around progress.
+      </h2>
+
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-item">
+        <h3>Experienced Coaching</h3>
+        <p>
+          Swimmers learn under qualified instructors who understand
+          progression and technique.
+        </p>
+      </div>
+
+      <div class="why-item">
+        <h3>Clear Progression</h3>
+        <p>
+          Each swimmer has a pathway that allows them to develop
+          their skills step by step.
+        </p>
+      </div>
+
+      <div class="why-item">
+        <h3>Positive Environment</h3>
+        <p>
+          We want swimmers to feel safe, supported and excited to
+          come back to the pool.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- JOIN -->
+
+  <section id="join" class="cta">
+
+    <h2>
+      Ready to start your swimming journey?
+    </h2>
+
+    <p>
+      Discover our Learn to Swim programme and find the right
+      starting point for your swimmer.
+    </p>
+
+    <a href="#" class="btn">
+      JOIN TORNADOES
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <div>
+        <div class="footer-title">
+          TORNADOES LTS
+        </div>
+
+        <p>
+          Learn to Swim Programme
+        </p>
+      </div>
+
+      <div>
+        <p>
+          Tornadoes Swimming Programme
+        </p>
+
+        <p>
+          Kingston, Jamaica
+        </p>
+      </div>
+
+      <div>
+        <p>
+          © 2026 Tornadoes Swimming
+        </p>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
