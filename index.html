@@ -4,22 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Tornadoes Learn to Swim</title>
+  <title>Tornadoes Swimming | Club Hub</title>
+  <meta name="description" content="Tornadoes Swimming Club — One Club. Many Paths. One Aquatic Family.">
 
   <style>
+    :root {
+      --blue: #073b66;
+      --blue-dark: #052a49;
+      --aqua: #00b8c8;
+      --aqua-light: #e8fbfd;
+      --orange: #f36b21;
+      --orange-light: #fff1e8;
+      --white: #ffffff;
+      --light: #f5f9fb;
+      --text: #183044;
+      --muted: #607487;
+      --border: #dce8ee;
+      --shadow: 0 12px 35px rgba(5, 42, 73, 0.10);
+      --radius: 18px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    :root {
-      --aqua: #12c9c9;
-      --orange: #ff641f;
-      --dark: #101820;
-      --light: #f5f8fa;
-      --white: #ffffff;
-      --gray: #66727a;
     }
 
     html {
@@ -28,117 +36,133 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--dark);
+      color: var(--text);
       background: var(--white);
       line-height: 1.6;
     }
 
-    /* NAVIGATION */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
     nav {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
       z-index: 1000;
-      background: rgba(16, 24, 32, 0.96);
-      padding: 16px 6%;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
 
-    .logo {
-      color: white;
-      font-size: 22px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: 1px;
+      color: var(--blue);
+      letter-spacing: .5px;
     }
 
-    .logo span {
-      color: var(--aqua);
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--blue);
+      color: white;
+      font-size: 21px;
+    }
+
+    .brand span {
+      font-size: 18px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
+      color: var(--muted);
     }
 
     .nav-links a:hover {
       color: var(--aqua);
     }
 
-    .nav-button {
-      background: var(--orange);
-      padding: 10px 18px;
-      border-radius: 25px;
-    }
-
     /* HERO */
-
     .hero {
-      min-height: 100vh;
-      padding: 150px 7% 80px;
-      display: flex;
-      align-items: center;
       background:
-        linear-gradient(rgba(5,15,20,.55), rgba(5,15,20,.72)),
-        url("https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1800&q=85")
-        center/cover;
+        radial-gradient(circle at top right, rgba(0,184,200,.20), transparent 35%),
+        linear-gradient(135deg, var(--blue-dark), var(--blue));
       color: white;
+      padding: 90px 0 80px;
+      overflow: hidden;
     }
 
-    .hero-content {
-      max-width: 720px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 55px;
     }
 
     .eyebrow {
-      color: var(--aqua);
-      text-transform: uppercase;
-      font-size: 14px;
+      color: #8debf1;
       font-weight: 800;
-      letter-spacing: 3px;
-      margin-bottom: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 14px;
     }
 
-    h1 {
-      font-size: clamp(48px, 8vw, 88px);
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
       line-height: .98;
-      margin-bottom: 25px;
+      margin-bottom: 22px;
     }
 
-    h1 span {
-      color: var(--aqua);
+    .hero h1 span {
+      color: #63e2e9;
     }
 
     .hero p {
-      max-width: 620px;
+      max-width: 680px;
       font-size: 20px;
-      color: #e9eeee;
-      margin-bottom: 35px;
+      color: #d8edf1;
+      margin-bottom: 30px;
     }
 
-    .buttons {
+    .hero-buttons {
       display: flex;
-      gap: 15px;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
     .btn {
       display: inline-block;
-      padding: 14px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: .2s;
+      padding: 13px 21px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 2px solid transparent;
+      transition: .2s ease;
     }
 
     .btn-primary {
@@ -146,271 +170,395 @@
       color: white;
     }
 
-    .btn-secondary {
-      border: 2px solid white;
-      color: white;
-    }
-
-    .btn:hover {
+    .btn-primary:hover {
       transform: translateY(-2px);
     }
 
-    /* GENERAL */
+    .btn-light {
+      border-color: rgba(255,255,255,.45);
+      color: white;
+    }
 
+    .hero-card {
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 30px;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .hero-card p {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* SECTIONS */
     section {
-      padding: 90px 7%;
+      padding: 75px 0;
     }
 
-    .section-header {
-      max-width: 700px;
-      margin-bottom: 45px;
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 35px;
     }
 
-    .section-label {
-      color: var(--orange);
-      font-weight: 800;
+    .section-heading .label {
+      color: var(--aqua);
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: 13px;
-      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 7px;
     }
 
-    h2 {
-      font-size: clamp(34px, 5vw, 54px);
-      line-height: 1.05;
-      margin-bottom: 15px;
+    .section-heading h2 {
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
 
-    .section-header p {
-      color: var(--gray);
-      font-size: 18px;
+    .section-heading p {
+      color: var(--muted);
     }
 
-    /* INTRO */
+    /* ABOUT */
+    .about {
+      background: var(--light);
+    }
 
-    .intro {
+    .about-box {
+      background: white;
+      padding: 35px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box p {
+      margin-bottom: 17px;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 28px;
+    }
+
+    .value {
+      padding: 20px;
+      background: var(--aqua-light);
+      border-radius: 14px;
+      font-weight: 800;
+      color: var(--blue);
+      text-align: center;
+    }
+
+    /* POOL */
+    .pool-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      gap: 25px;
     }
 
-    .intro-image {
-      min-height: 420px;
-      border-radius: 25px;
-      background:
-        url("https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&w=1000&q=85")
-        center/cover;
+    .pool-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
 
-    .intro-text p {
-      color: var(--gray);
-      margin-bottom: 20px;
-      font-size: 17px;
+    .pool-card.highlight {
+      border-top: 5px solid var(--aqua);
+    }
+
+    .pool-card h3 {
+      color: var(--blue);
+      margin-bottom: 18px;
+      font-size: 23px;
+    }
+
+    .hours {
+      list-style: none;
+    }
+
+    .hours li {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours li:last-child {
+      border-bottom: none;
+    }
+
+    .price-list {
+      list-style: none;
+    }
+
+    .price-list li {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-list li:last-child {
+      border-bottom: none;
+    }
+
+    .price {
+      font-weight: 800;
+      color: var(--orange);
+    }
+
+    .pool-note {
+      margin-top: 18px;
+      padding: 16px;
+      background: var(--orange-light);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 14px;
     }
 
     /* PROGRAMS */
-
     .programs {
       background: var(--light);
     }
 
-    .cards {
+    .program-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
-    .card {
+    .program-card {
       background: white;
-      border-radius: 20px;
-      padding: 30px;
-      border: 1px solid #e5eaed;
-      transition: .25s;
+      border-radius: var(--radius);
+      padding: 27px;
+      border: 1px solid var(--border);
+      transition: .2s ease;
+      box-shadow: 0 7px 25px rgba(5,42,73,.06);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
     }
 
-    .card-number {
-      color: var(--orange);
-      font-weight: 900;
+    .program-icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .program-card h3 {
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .program-card p {
+      color: var(--muted);
       font-size: 14px;
-      margin-bottom: 20px;
     }
 
-    .card h3 {
-      font-size: 24px;
+    .program-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: var(--aqua);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    /* QUICK ACCESS */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .quick-card {
+      padding: 24px 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-align: center;
+      font-weight: 800;
+      color: var(--blue);
+      background: white;
+    }
+
+    .quick-card:hover {
+      background: var(--aqua-light);
+    }
+
+    .quick-card .icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* JOIN */
+    .join {
+      background: linear-gradient(135deg, var(--orange), #e95712);
+      color: white;
+    }
+
+    .join .section-heading h2,
+    .join .section-heading .label,
+    .join .section-heading p {
+      color: white;
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .steps {
+      display: grid;
+      gap: 13px;
+    }
+
+    .step {
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* AI */
+    .ai-card {
+      background: var(--blue);
+      color: white;
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .ai-card h2 {
+      font-size: 34px;
       margin-bottom: 10px;
     }
 
-    .card p {
-      color: var(--gray);
-    }
-
-    /* LEVELS */
-
-    .levels {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .level {
-      padding: 28px;
-      border-radius: 18px;
-      background: var(--dark);
-      color: white;
-    }
-
-    .level:nth-child(2) {
-      background: var(--aqua);
-      color: var(--dark);
-    }
-
-    .level:nth-child(3) {
-      background: var(--orange);
-    }
-
-    .level:nth-child(4) {
-      background: #26343d;
-    }
-
-    .level h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .level p {
-      font-size: 14px;
-      opacity: .9;
-    }
-
-    /* WHY */
-
-    .why {
-      background: var(--dark);
-      color: white;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .why-item {
-      padding: 25px;
-      border-left: 3px solid var(--aqua);
-    }
-
-    .why-item h3 {
-      margin-bottom: 8px;
-    }
-
-    .why-item p {
-      color: #b8c3c8;
-    }
-
-    /* CTA */
-
-    .cta {
-      text-align: center;
-      background:
-        linear-gradient(120deg, var(--aqua), #0ca8b0);
-      color: var(--dark);
-    }
-
-    .cta h2 {
+    .ai-card p {
+      color: #d9edf1;
       max-width: 700px;
-      margin: 0 auto 18px;
-    }
-
-    .cta p {
-      max-width: 600px;
-      margin: 0 auto 30px;
-      font-size: 18px;
-    }
-
-    .cta .btn {
-      background: var(--dark);
-      color: white;
+      margin: 0 auto 24px;
     }
 
     /* FOOTER */
-
     footer {
-      background: #080d11;
+      background: var(--blue-dark);
+      color: #d4e4eb;
+      padding: 45px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    footer h3 {
       color: white;
-      padding: 45px 7%;
+      margin-bottom: 12px;
     }
 
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    footer p {
-      color: #9ba7ad;
+    footer p,
+    footer li {
       font-size: 14px;
+      color: #b7ced8;
     }
 
-    .footer-title {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px;
+    footer ul {
+      list-style: none;
     }
 
-    /* MOBILE */
+    footer li {
+      margin-bottom: 7px;
+    }
 
+    .copyright {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+      color: #8eabb7;
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 900px) {
+      .hero-grid,
+      .pool-grid,
+      .join-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .program-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        padding: 13px 0;
+      }
 
       .nav-links {
-        display: none;
-      }
-
-      .intro {
-        grid-template-columns: 1fr;
-      }
-
-      .cards {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .levels {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .why-grid {
-        grid-template-columns: 1fr;
+        justify-content: flex-start;
       }
     }
 
     @media (max-width: 600px) {
+      .hero {
+        padding: 65px 0;
+      }
 
       section {
-        padding: 65px 6%;
+        padding: 55px 0;
       }
 
-      .hero {
-        padding: 130px 6% 70px;
-      }
-
-      .hero p {
-        font-size: 17px;
-      }
-
-      .cards,
-      .levels {
+      .program-grid,
+      .quick-grid,
+      .values,
+      .footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .intro-image {
-        min-height: 300px;
+      .hours li {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav-links {
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .hero-card,
+      .about-box,
+      .pool-card,
+      .ai-card {
+        padding: 24px;
       }
     }
   </style>
@@ -419,339 +567,464 @@
 <body>
 
   <!-- NAVIGATION -->
-
   <nav>
-    <div class="logo">
-      TORNADOES <span>LTS</span>
-    </div>
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <div class="brand-mark">🌪️</div>
+        <span>TORNADOES SWIMMING</span>
+      </a>
 
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#levels">Levels</a></li>
-      <li><a href="#why">Why Tornadoes</a></li>
-      <li>
-        <a href="#join" class="nav-button">JOIN US</a>
-      </li>
-    </ul>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#pool">UWI Pool</a>
+        <a href="#programs">Programs</a>
+        <a href="#join">Join</a>
+        <a href="#resources">Resources</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </nav>
 
-
   <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-grid">
 
-  <header class="hero">
+      <div>
+        <div class="eyebrow">Official Club Hub</div>
 
-    <div class="hero-content">
+        <h1>
+          TORNADOES<br>
+          <span>SWIMMING</span>
+        </h1>
 
-      <div class="eyebrow">
-        Tornadoes Swimming Programme
+        <p>
+          One Club. Many Paths. One Aquatic Family.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#programs" class="btn btn-primary">Explore Our Programs</a>
+          <a href="#join" class="btn btn-light">Join Tornadoes</a>
+        </div>
       </div>
 
-      <h1>
-        Learn to Swim.<br>
-        <span>Love the Water.</span>
-      </h1>
-
-      <p>
-        A progressive swimming programme designed to help children
-        build confidence, develop strong swimming skills and enjoy
-        every step of their journey in the water.
-      </p>
-
-      <div class="buttons">
-        <a href="#join" class="btn btn-primary">
-          START YOUR JOURNEY
-        </a>
-
-        <a href="#programs" class="btn btn-secondary">
-          EXPLORE THE PROGRAM
-        </a>
+      <div class="hero-card">
+        <h3>Welcome to the Tornadoes Swim Club Family!</h3>
+        <p>
+          Whether you are just starting your swimming journey
+          or aiming for international competition, there’s a place
+          for everyone at Tornadoes.
+        </p>
       </div>
 
     </div>
-
   </header>
 
 
-  <!-- ABOUT -->
+  <!-- ABOUT TORNADOES -->
+  <section class="about" id="about">
+    <div class="container">
 
-  <section id="about">
+      <div class="section-heading">
+        <div class="label">About Tornadoes</div>
+        <h2>More than just a team — we are a family.</h2>
+      </div>
 
-    <div class="intro">
+      <div class="about-box">
 
-      <div class="intro-image"></div>
+        <p>
+          What began in 1989 as a small swim club with just 10 swimmers
+          has grown into Jamaica’s premier aquatic program, encompassing
+          competitive swimming, Learn to Swim, artistic swimming, water polo,
+          triathlon, open water swimming, and masters swimming.
+        </p>
 
-      <div class="intro-text">
+        <p>
+          Founded by Coach Jacky Walter, Kim Ingleton, and Pat Compust,
+          Tornadoes Swim Club is built on the core values of perseverance,
+          teamwork, and excellence, with family at its heart.
+        </p>
 
-        <div class="section-label">
-          Learn to Swim
+        <p>
+          Today, Tornadoes has over 250 athletes competing at local,
+          regional, and international levels.
+        </p>
+
+        <div class="values">
+          <div class="value">Perseverance</div>
+          <div class="value">Teamwork</div>
+          <div class="value">Excellence</div>
         </div>
 
-        <h2>
-          More than swimming lessons.
-        </h2>
+      </div>
+    </div>
+  </section>
 
+
+  <!-- UWI POOL -->
+  <section id="pool">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="label">Our Facility</div>
+        <h2>UWI Mona Swimming Pool</h2>
         <p>
-          At Tornadoes, we believe learning to swim is about much
-          more than learning strokes.
+          Tornadoes Swimming Pool • University of the West Indies, Mona
         </p>
+      </div>
 
-        <p>
-          Our programme helps swimmers develop water confidence,
-          safety awareness, technique and independence in a positive
-          and supportive environment.
-        </p>
+      <div class="pool-grid">
 
-        <a href="#levels" class="btn btn-primary">
-          SEE OUR LEVELS
-        </a>
+        <div class="pool-card highlight">
+          <h3>🏊 General Public Opening Hours</h3>
+
+          <ul class="hours">
+            <li><span>Monday</span><strong>10:00 AM – 3:00 PM</strong></li>
+            <li><span>Tuesday</span><strong>7:00 AM – 7:00 PM</strong></li>
+            <li><span>Wednesday</span><strong>10:00 AM – 7:00 PM</strong></li>
+            <li><span>Thursday</span><strong>7:00 AM – 7:00 PM</strong></li>
+            <li><span>Friday</span><strong>10:00 AM – 7:00 PM</strong></li>
+            <li><span>Saturday</span><strong>9:00 AM – 5:00 PM</strong></li>
+            <li><span>Sunday</span><strong>9:00 AM – 4:00 PM</strong></li>
+          </ul>
+        </div>
+
+        <div class="pool-card">
+          <h3>💳 UWI Access & Rates</h3>
+
+          <ul class="price-list">
+            <li>
+              <strong>UWI Students, Staff & Alumni</strong><br>
+              <span class="price">J$250</span> per entry
+              <br><small>Valid UWI ID required</small>
+            </li>
+
+            <li>
+              <strong>UWI Staff & University Members</strong><br>
+              <span class="price">FREE</span>
+              <br><small>Monday–Friday, 12:00 PM–1:00 PM. Valid ID required.</small>
+            </li>
+
+            <li>
+              <strong>External Visitors</strong><br>
+              <span class="price">J$350</span> per entry
+            </li>
+
+            <li>
+              <strong>Monthly Pass — General Public</strong><br>
+              <span class="price">J$3,000</span>
+            </li>
+
+            <li>
+              <strong>Monthly Pass — UWI Members</strong><br>
+              <span class="price">J$2,000</span>
+            </li>
+          </ul>
+        </div>
 
       </div>
 
-    </div>
+      <div class="pool-note">
+        <strong>Pool Contact:</strong> Jessica — Pool Manager —
+        (876) 507-1209
+      </div>
 
+    </div>
   </section>
 
 
   <!-- PROGRAMS -->
+  <section class="programs" id="programs">
+    <div class="container">
 
-  <section id="programs" class="programs">
-
-    <div class="section-header">
-
-      <div class="section-label">
-        Our Programme
+      <div class="section-heading">
+        <div class="label">Our Programs</div>
+        <h2>Find Your Path</h2>
+        <p>
+          Explore the aquatic programs that make up the Tornadoes Swimming Club.
+        </p>
       </div>
 
-      <h2>
-        A pathway for every swimmer.
-      </h2>
+      <div class="program-grid">
 
-      <p>
-        From first experiences in the water to confident independent
-        swimming, our programme provides a clear progression.
-      </p>
+        <article class="program-card">
+          <div class="program-icon">🏊</div>
+          <h3>Competitive Swimming</h3>
+          <p>
+            High-performance swimming and athlete development.
+          </p>
+          <a href="#contact" class="program-link">Explore →</a>
+        </article>
 
+        <article class="program-card">
+          <div class="program-icon">🌊</div>
+          <h3>Learn to Swim</h3>
+          <p>
+            Build confidence, develop essential swimming skills,
+            and enjoy the water.
+          </p>
+          <a href="#contact" class="program-link">Explore →</a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-icon">🎀</div>
+          <h3>Artistic Swimming</h3>
+          <p>
+            Artistic swimming development within the Tornadoes family.
+          </p>
+          <a href="#contact" class="program-link">Explore →</a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-icon">🤽</div>
+          <h3>Water Polo</h3>
+          <p>
+            Team-based aquatic sport combining swimming,
+            strategy, fitness, and competition.
+          </p>
+          <a href="#contact" class="program-link">Explore →</a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-icon">🌊</div>
+          <h3>Open Water Swimming / Triathlon</h3>
+          <p>
+            Aquatic endurance and open-water pathways.
+          </p>
+          <a href="#contact" class="program-link">Explore →</a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-icon">🏅</div>
+          <h3>Masters Swimming</h3>
+          <p>
+            Swimming opportunities for adult athletes
+            and lifelong swimmers.
+          </p>
+          <a href="#contact" class="program-link">Explore →</a>
+        </article>
+
+      </div>
     </div>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-number">01</div>
-        <h3>Water Confidence</h3>
-        <p>
-          Helping swimmers become comfortable, relaxed and confident
-          in the aquatic environment.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-number">02</div>
-        <h3>Swimming Skills</h3>
-        <p>
-          Developing fundamental skills including floating,
-          breathing, kicking and movement through the water.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-number">03</div>
-        <h3>Stroke Development</h3>
-        <p>
-          Building proper technique and introducing the four
-          competitive swimming strokes.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-number">04</div>
-        <h3>Water Safety</h3>
-        <p>
-          Developing essential skills that help swimmers become
-          safer and more capable around water.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-number">05</div>
-        <h3>Confidence</h3>
-        <p>
-          Creating positive experiences that encourage swimmers to
-          enjoy learning and challenge themselves.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-number">06</div>
-        <h3>Progression</h3>
-        <p>
-          Preparing swimmers who are ready to continue into more
-          advanced swimming programmes.
-        </p>
-      </div>
-
-    </div>
-
   </section>
 
 
-  <!-- LEVELS -->
+  <!-- QUICK ACCESS -->
+  <section id="resources">
+    <div class="container">
 
-  <section id="levels">
-
-    <div class="section-header">
-
-      <div class="section-label">
-        Swimming Levels
+      <div class="section-heading">
+        <div class="label">Club Hub</div>
+        <h2>Everything in One Place</h2>
+        <p>
+          The new Hub is designed to make information easier to find,
+          without unnecessary navigation.
+        </p>
       </div>
 
-      <h2>
-        Find your swimmer's starting point.
-      </h2>
+      <div class="quick-grid">
 
-      <p>
-        Our instructors assess each swimmer and help them progress
-        at an appropriate pace.
-      </p>
+        <a class="quick-card" href="#programs">
+          <span class="icon">📅</span>
+          Club Schedule
+        </a>
 
+        <a class="quick-card" href="#join">
+          <span class="icon">📝</span>
+          Join the Club
+        </a>
+
+        <a class="quick-card" href="#achievers">
+          <span class="icon">🏆</span>
+          Achievers
+        </a>
+
+        <a class="quick-card" href="#news">
+          <span class="icon">📢</span>
+          News & Announcements
+        </a>
+
+        <a class="quick-card" href="#members">
+          <span class="icon">👨‍👩‍👧</span>
+          Members & Parents
+        </a>
+
+        <a class="quick-card" href="#resources">
+          <span class="icon">📚</span>
+          Resources
+        </a>
+
+        <a class="quick-card" href="#ai">
+          <span class="icon">🤖</span>
+          Tornadoes AI
+        </a>
+
+        <a class="quick-card" href="#contact">
+          <span class="icon">📞</span>
+          Contact
+        </a>
+
+      </div>
     </div>
-
-    <div class="levels">
-
-      <div class="level">
-        <h3>Level 1</h3>
-        <p>
-          Introduction to the water, confidence and basic movement.
-        </p>
-      </div>
-
-      <div class="level">
-        <h3>Level 2</h3>
-        <p>
-          Developing independent swimming and fundamental skills.
-        </p>
-      </div>
-
-      <div class="level">
-        <h3>Level 3</h3>
-        <p>
-          Building stronger technique, endurance and stroke skills.
-        </p>
-      </div>
-
-      <div class="level">
-        <h3>Level 4+</h3>
-        <p>
-          Advanced skills and preparation for continued swimming.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- WHY TORNADOES -->
-
-  <section id="why" class="why">
-
-    <div class="section-header">
-
-      <div class="section-label">
-        Why Tornadoes
-      </div>
-
-      <h2>
-        A programme built around progress.
-      </h2>
-
-    </div>
-
-    <div class="why-grid">
-
-      <div class="why-item">
-        <h3>Experienced Coaching</h3>
-        <p>
-          Swimmers learn under qualified instructors who understand
-          progression and technique.
-        </p>
-      </div>
-
-      <div class="why-item">
-        <h3>Clear Progression</h3>
-        <p>
-          Each swimmer has a pathway that allows them to develop
-          their skills step by step.
-        </p>
-      </div>
-
-      <div class="why-item">
-        <h3>Positive Environment</h3>
-        <p>
-          We want swimmers to feel safe, supported and excited to
-          come back to the pool.
-        </p>
-      </div>
-
-    </div>
-
   </section>
 
 
   <!-- JOIN -->
+  <section class="join" id="join">
+    <div class="container join-grid">
 
-  <section id="join" class="cta">
+      <div>
+        <div class="section-heading">
+          <div class="label">Join Tornadoes</div>
+          <h2>Find the right path for you.</h2>
+          <p>
+            From learning your first strokes to representing Jamaica
+            internationally, there is a place for you at Tornadoes.
+          </p>
+        </div>
 
-    <h2>
-      Ready to start your swimming journey?
-    </h2>
+        <a href="#contact" class="btn btn-light">Contact Tornadoes</a>
+      </div>
 
-    <p>
-      Discover our Learn to Swim programme and find the right
-      starting point for your swimmer.
-    </p>
+      <div class="steps">
 
-    <a href="#" class="btn">
-      JOIN TORNADOES
-    </a>
+        <div class="step">
+          <strong>1. Choose Your Program</strong>
+          Explore the aquatic pathway that fits your goals.
+        </div>
 
+        <div class="step">
+          <strong>2. Get Information</strong>
+          Review schedules, locations, requirements, and fees.
+        </div>
+
+        <div class="step">
+          <strong>3. Register</strong>
+          Complete the registration process for your selected program.
+        </div>
+
+        <div class="step">
+          <strong>4. Become a Tornado</strong>
+          Welcome to the Tornadoes Swimming Club family.
+        </div>
+
+      </div>
+    </div>
   </section>
 
 
-  <!-- FOOTER -->
+  <!-- ACHIEVERS -->
+  <section id="achievers">
+    <div class="container">
 
-  <footer>
-
-    <div class="footer-content">
-
-      <div>
-        <div class="footer-title">
-          TORNADOES LTS
-        </div>
-
+      <div class="section-heading">
+        <div class="label">Achievements</div>
+        <h2>Tornadoes Achievers</h2>
         <p>
-          Learn to Swim Programme
-        </p>
-      </div>
-
-      <div>
-        <p>
-          Tornadoes Swimming Programme
-        </p>
-
-        <p>
-          Kingston, Jamaica
-        </p>
-      </div>
-
-      <div>
-        <p>
-          © 2026 Tornadoes Swimming
+          Celebrating the athletes and members who continue
+          to represent the Tornadoes family with excellence.
         </p>
       </div>
 
     </div>
+  </section>
 
+
+  <!-- NEWS -->
+  <section class="about" id="news">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="label">Stay Connected</div>
+        <h2>News & Announcements</h2>
+        <p>
+          Important club updates, announcements, and information
+          will be organized here.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- MEMBERS -->
+  <section id="members">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="label">Members & Parents</div>
+        <h2>Your Tornadoes Resources</h2>
+        <p>
+          A dedicated area for parents, athletes, and members
+          to find useful club information.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- AI -->
+  <section id="ai">
+    <div class="container">
+
+      <div class="ai-card">
+        <h2>🤖 Tornadoes AI Portal</h2>
+
+        <p>
+          Have a question about Tornadoes Swimming?
+          The future AI Portal will help parents, athletes,
+          and visitors find answers quickly.
+        </p>
+
+        <a href="#contact" class="btn btn-primary">
+          Coming Soon
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h3>🌪️ Tornadoes Swimming</h3>
+          <p>
+            One Club. Many Paths. One Aquatic Family.
+          </p>
+        </div>
+
+        <div>
+          <h3>Club</h3>
+          <ul>
+            <li><a href="#about">About Tornadoes</a></li>
+            <li><a href="#programs">Our Programs</a></li>
+            <li><a href="#join">Join the Club</a></li>
+            <li><a href="#achievers">Achievers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>UWI Mona, Kingston, Jamaica</li>
+            <li>Jessica — (876) 507-1209</li>
+            <li>Wendy — (876) 881-5334</li>
+            <li>www.tornadoesswimming.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © 2026 Tornadoes Swimming Club. All Rights Reserved.
+      </div>
+
+    </div>
   </footer>
 
 </body>
