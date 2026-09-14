@@ -561,6 +561,336 @@
         padding: 24px;
       }
     }
+    /* =========================================
+   TORNADOES SWIMMING — NEW CLUB HUB LOOK
+   ========================================= */
+
+/* Header */
+nav {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  border-bottom: 0;
+}
+
+.nav-inner {
+  min-height: 82px;
+}
+
+.brand {
+  color: #082f50;
+}
+
+.brand-mark {
+  background: transparent;
+  color: #00b8c8;
+  font-size: 30px;
+}
+
+.brand span {
+  color: #082f50;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.nav-links {
+  gap: 24px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: #10263a;
+  position: relative;
+  padding: 30px 0;
+}
+
+.nav-links a:hover {
+  color: #00b8c8;
+}
+
+.nav-links a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  height: 3px;
+  background: #00b8c8;
+  border-radius: 5px;
+}
+
+/* =========================================
+   HERO — LARGE PHOTO
+   ========================================= */
+
+.hero {
+  position: relative;
+  min-height: 470px;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  background: #062d4b;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,25,48,.88) 0%,
+      rgba(0,25,48,.72) 32%,
+      rgba(0,25,48,.20) 62%,
+      rgba(0,25,48,.05) 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-grid {
+  width: 100%;
+  max-width: none;
+  display: block;
+  position: relative;
+  min-height: 470px;
+  margin: 0;
+}
+
+.hero-grid > div:first-child {
+  position: relative;
+  z-index: 3;
+  width: min(620px, 55%);
+  padding: 105px 0 70px 6vw;
+}
+
+.hero-grid > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* Hero typography */
+.hero .eyebrow {
+  color: #63e2e9;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  color: #ffffff;
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: .92;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hero h1 span {
+  color: #58dce5;
+}
+
+.hero p {
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+/* Hero buttons */
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+  border-radius: 0;
+  padding: 15px 25px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.hero-buttons .btn-primary {
+  background: #ff6b22;
+  border: 2px solid #ff6b22;
+}
+
+.hero-buttons .btn-primary:hover {
+  background: #ffffff;
+  color: #ff6b22;
+}
+
+.hero-buttons .btn-light {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.hero-buttons .btn-light:hover {
+  background: #ffffff;
+  color: #082f50;
+}
+
+/* Hide the old floating hero card */
+.hero-card {
+  display: none;
+}
+
+/* =========================================
+   PROGRAMS — SIX VISUAL CARDS
+   ========================================= */
+
+#programs {
+  background: #ffffff;
+  padding-top: 35px;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+.program-card {
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 0;
+  background: #063653;
+  border: 0;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.18);
+}
+
+.program-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.program-card h3 {
+  color: #ffffff;
+  background: #063653;
+  margin: 0;
+  padding: 18px 14px;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+/* =========================================
+   GENERAL SECTIONS
+   ========================================= */
+
+section {
+  border-radius: 0;
+}
+
+.section-heading {
+  text-align: center;
+}
+
+.section-heading .label {
+  color: #00b8c8;
+  letter-spacing: 3px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  color: #082f50;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+  background: #061c2d;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+footer a:hover {
+  color: #00b8c8;
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .nav-links {
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  .hero-grid > div:first-child {
+    width: 75%;
+    padding: 80px 30px;
+  }
+
+  .program-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+
+  .nav-inner {
+    min-height: 70px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    min-height: 520px;
+  }
+
+  .hero-grid {
+    min-height: 520px;
+  }
+
+  .hero-grid > div:first-child {
+    width: 100%;
+    padding: 90px 25px 50px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+
+  .program-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .program-card img {
+    height: 120px;
+  }
+}
   </style>
 </head>
 
