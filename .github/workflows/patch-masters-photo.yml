@@ -19,13 +19,15 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          old = '<img src="images/home-01.png" alt="Masters">'
-          new = '<img src="images/masters-card.jpg" alt="Masters">'
-          if old not in s:
-              raise SystemExit('Masters image reference not found')
-          p.write_text(s.replace(old, new, 1), encoding='utf-8')
+          matches = list(re.finditer(r'images/home-01\.png', s))
+          if not matches:
+              raise SystemExit('No home-01 image reference found')
+          pos = matches[-1].start()
+          s = s[:pos] + 'images/masters-card.jpg' + s[pos + len('images/home-01.png'):]
+          p.write_text(s, encoding='utf-8')
           PY
 
       - name: Commit and push
